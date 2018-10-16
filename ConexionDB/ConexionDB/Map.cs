@@ -17,12 +17,15 @@ namespace ConexionDB
     public class Map<T> where T : new()
     {
         private IList<Schema> _schema;
-        private IDataReader _reader;
+        //private IDataReader _reader;
+        private Func<int, Object> _read;
 
-        public Map(IList<Schema> schema, IDataReader reader)
+        public Map(IList<Schema> schema, Func<int, Object> read) 
+            // en puesto de pasar un IDataReader, es solo necesario pasar un puntero a un método.
+            // Al final no ganas mucho, solo cambiar el GetValue de esta clase a SqlQuery.
         {
             _schema = schema;
-            _reader = reader;
+            _read = read;
         }
 
         public T getValue()
@@ -33,7 +36,7 @@ namespace ConexionDB
                 var property = instancia.GetType().GetProperty(schema.Column);
                 if (null != property)
                 {
-                    property.SetValue(instancia, _reader.GetValue(schema.Ordinal));
+                    property.SetValue(instancia, _read(schema.Ordinal));
                 }
             }
             return instancia;

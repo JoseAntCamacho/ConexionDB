@@ -17,8 +17,9 @@ namespace ConexionDB
             _connection = connection;
         }
 
-        public IEnumerable<T> Query<T>(string sql, Dictionary<string, object> parameter) where T : new()
+        public IEnumerable<T> Query<T>(string sql, Dictionary<string, object> parameter = null) where T : new()
         {
+            //TODO: Hay que poner un try catch aquí.           
             _connection.Open();
             using (var cmd = Command(sql))
             {
@@ -27,10 +28,10 @@ namespace ConexionDB
                 var schema = GetSchema(datareader.GetSchemaTable());
                 while (datareader.Read())
                 {
-                    yield return new Map<T>(schema, datareader).getValue();
+                    yield return new Map<T>(schema, datareader.GetValue).getValue();
                 }
             }
-            _connection.Close();
+            _connection.Close();            
         }
 
         public IList<Schema> GetSchema(DataTable t)
@@ -38,13 +39,16 @@ namespace ConexionDB
             return t.AsEnumerable().Select(c =>
             new Schema
             {
-                Column = c.Field<String>("ColumnName"),
+                // TODO: Aquí tendríamos un problema si los nombre no coinciden. 
+                // Hay que pasarlos a ToPascalCase().
+                Column = c.Field<string>("ColumnName").ToPascalCase(),
                 Ordinal = c.Field<int>("ColumnOrdinal")
             }).ToList();
         }
 
         IDbCommand Command(string sql)
         {
+            //TODO: Esto es muy restrictivo, hay que hacer un factory pattern para todos los tipos de comandos.
             return new SqlCommand(sql);
         }
     }

@@ -13,7 +13,6 @@ namespace ConexionDB
 
         static void Main(string[] args)
         {
-            
             try
             {
                 Dapper.ConnectionString = ConfigurationManager.AppSettings["DataSource1"];

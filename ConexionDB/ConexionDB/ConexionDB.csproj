@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dapper.cs" />
+    <Compile Include="ExtensionString.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="SqlQuery.cs" />
     <Compile Include="Program.cs" />
