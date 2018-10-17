@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.Linq.Expressions;
 
 
 namespace ConexionDB
@@ -15,13 +16,12 @@ namespace ConexionDB
         {
             return i == 1;
         }
+
         static void Main(string[] args)
         {
-
+            /* para ver los delegados y el Enumerable
             Func<int, bool> valor;
-            valor = IgualA1;
-
-            
+            valor = IgualA1;            
             var objects = new int[] { 1, 2, 3, 4, 5, 6 };
             var query1 = objects.Where(c => c % 2 == 0).Select(c => c).OrderByDescending(c => c).ToList();
             var query2 = objects.Select(c => c % 2 == 0);
@@ -35,6 +35,9 @@ namespace ConexionDB
                 Console.WriteLine(q);
             }
             Console.Read();
+            */
+
+            /*para ver el IQueriable*/
 
             try
             {
