@@ -23,6 +23,7 @@ namespace ConexionDB
         public Map(IList<Schema> schema, Func<int, Object> read) 
             // en puesto de pasar un IDataReader, es solo necesario pasar un puntero a un método.
             // Al final no ganas mucho, solo cambiar el GetValue de esta clase a SqlQuery.
+            // Pero si haces esto es mucho más genérico y puedo testearlo mucho mejor.
         {
             _schema = schema;
             _read = read;

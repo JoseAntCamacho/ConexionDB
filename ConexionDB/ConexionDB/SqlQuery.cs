@@ -34,7 +34,7 @@ namespace ConexionDB
             _connection.Close();            
         }
 
-        public IList<Schema> GetSchema(DataTable t)
+        private IList<Schema> GetSchema(DataTable t) //es privado porque lo usamos solo aquí y no queremos que lo vean.
         {
             return t.AsEnumerable().Select(c =>
             new Schema
@@ -46,7 +46,10 @@ namespace ConexionDB
             }).ToList();
         }
 
-        IDbCommand Command(string sql)
+        /* Aquí se viola uno de los principios solid porque aquí no podemos burlar para testear.
+           este trozo de comando, por lo que tendríamos que pasarlo por un atributo.*/
+        
+        private IDbCommand Command(string sql)
         {
             //TODO: Esto es muy restrictivo, hay que hacer un factory pattern para todos los tipos de comandos.
             return new SqlCommand(sql);

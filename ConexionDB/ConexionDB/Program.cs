@@ -6,13 +6,36 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Collections.Specialized;
 
-namespace ConexionDB
-{
-    class Program
-    {        
 
+namespace ConexionDB
+{ 
+    class Program
+    {
+        public static bool IgualA1(int i)
+        {
+            return i == 1;
+        }
         static void Main(string[] args)
         {
+
+            Func<int, bool> valor;
+            valor = IgualA1;
+
+            
+            var objects = new int[] { 1, 2, 3, 4, 5, 6 };
+            var query1 = objects.Where(c => c % 2 == 0).Select(c => c).OrderByDescending(c => c).ToList();
+            var query2 = objects.Select(c => c % 2 == 0);
+            foreach(var q in query1)
+            {
+                Console.WriteLine(q);
+            }
+            Console.WriteLine("------------------");
+            foreach (var q in query2)
+            {
+                Console.WriteLine(q);
+            }
+            Console.Read();
+
             try
             {
                 Dapper.ConnectionString = ConfigurationManager.AppSettings["DataSource1"];
