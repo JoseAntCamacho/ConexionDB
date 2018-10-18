@@ -13,17 +13,17 @@ namespace ConexionDB
         {
             /* Esto sirve para poder añadir, actualizar y borrar en un contexto.
              * Y después salvas los resultados con el unit of work (savechanges).*/
-             
+
             /*using( var context = new Context())
             {
                 var pizza = new Pizza() { Name = "Salami y prosciuto"};
                 context.Pizza.Add(pizza);
                 context.SaveChanges();                
             }*/
-            
+
             /* Y aquí lo recuperamos porque el context.Tsource es un IQueriable que podemos añadirle
              * toda la magia del LINQ para poder obtener el resultado deseado.*/
-             
+
             /*using (var context = new Context())
             {
                 var pizza = context.Pizza.Where(c => c.Id == 1);
@@ -54,10 +54,15 @@ namespace ConexionDB
                 pizza.MuestraPantalla();
             }*/
 
+
+           
             Console.Read();
+
+            
             
         }
     }
+
 
     public class Context : DbContext
     {
