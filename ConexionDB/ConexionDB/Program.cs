@@ -16,9 +16,9 @@ namespace ConexionDB
         {
             return i == 1;
         }
-
+        /*
         static void Main(string[] args)
-        {
+        {/
             /* para ver los delegados y el Enumerable
             Func<int, bool> valor;
             valor = IgualA1;            
@@ -39,7 +39,12 @@ namespace ConexionDB
 
             /*para ver el IQueriable*/
 
-            try
+            /*Es una ampliación del IEnumerable que nos ayuda a convertir un lenguaje lambda en cualquier cosa que nosotros queramos
+                con un visitor pattern. Así podemos construir el lenguaje sql como queramos.*/
+                
+            
+            /* Aquí ya tenemos la conexión con la base de datos*/
+           /* try
             {
                 Dapper.ConnectionString = ConfigurationManager.AppSettings["DataSource1"];
                 var query = Dapper.Open().Query<Pizza>("Select * from [table]", null).ToList();
@@ -58,23 +63,6 @@ namespace ConexionDB
             }
             
             Console.ReadLine();
-        }
-
-        public class Pizza
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-
-            public Pizza() { }
-            public Pizza(int id, string name)
-            {
-                Id = id;
-                Name = name;
-            }
-            public void MuestraPantalla()
-            {
-                Console.WriteLine("Tenemos la pizza con Id " + this.Id + " y con el nombre " + this.Name);
-            }
-        }
+        } */       
     }
 }

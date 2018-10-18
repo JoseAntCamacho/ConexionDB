@@ -33,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +51,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar.cs" />
     <Compile Include="Dapper.cs" />
     <Compile Include="ExtensionString.cs" />
     <Compile Include="ISqlQuery.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Migrations\201810180858467_InitialCreate.cs" />
+    <Compile Include="Migrations\201810180858467_InitialCreate.Designer.cs">
+      <DependentUpon>201810180858467_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810181043513_createBar.cs" />
+    <Compile Include="Migrations\201810181043513_createBar.Designer.cs">
+      <DependentUpon>201810181043513_createBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Pizza.cs" />
+    <Compile Include="Program2.cs" />
     <Compile Include="SqlQuery.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810180858467_InitialCreate.resx">
+      <DependentUpon>201810180858467_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810181043513_createBar.resx">
+      <DependentUpon>201810181043513_createBar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
